@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-JuanaApplication<Juana>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.sena.Juana.JuanaApplication",
+            "projectName": "Juana",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
