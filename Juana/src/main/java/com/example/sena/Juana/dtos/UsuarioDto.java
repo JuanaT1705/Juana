@@ -2,19 +2,21 @@ package com.example.sena.Juana.dtos;
 
 
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
+
 
 @Getter @Setter 
 @AllArgsConstructor 
 @NoArgsConstructor 
-@Builder 
-public class UsuarioDto {
+@SuperBuilder 
+public class UsuarioDto{
 
 
     private Long id;
@@ -28,9 +30,10 @@ public class UsuarioDto {
 
     private String apell;
 
-    @Size (min = 3, max = 60, message = "La dirección debe tener entre 3 y 60 caracteres")
+    @Size ( max = 120, message = "La dirección no puede superar los 120 caracteres")
     private String direc;
 
-    @Pattern (regexp = "^[0-9]+$", message = "El teléfono debe tener 10 dígitos")
-    private Long telef;
+    @Pattern (regexp = "^[0-9]+$", message = "El teléfono contiene caracteres no válidos")
+    private String tele;
+
 }

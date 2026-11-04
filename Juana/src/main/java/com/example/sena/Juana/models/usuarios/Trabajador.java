@@ -8,7 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.SuperBuilder;
+import lombok.experimental.SuperBuilder;
+
 
 @Entity 
 @Table (name = "trabajadores")
@@ -21,6 +22,7 @@ public class Trabajador extends Usuario {
 
     private String cargo;
 
-    private Double salario;
+    private Double sueldo;
+
 
 }
