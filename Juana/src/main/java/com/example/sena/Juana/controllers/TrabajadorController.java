@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.sena.Juana.dtos.ClienteDto;
+import com.example.sena.Juana.dtos.ClienteDtoResponse;
 import com.example.sena.Juana.dtos.TrabajadorDto;
+import com.example.sena.Juana.dtos.TrabajadorDtoResponse;
 import com.example.sena.Juana.services.TrabajadorServices;
 
 
@@ -31,49 +34,42 @@ public class TrabajadorController {
     
     //Registrar nuevo trabajador
     @PostMapping
-    public ResponseEntity <TrabajadorDto> guardar (@Valid @RequestBody TrabajadorDto trabajadorDto) {
-        TrabajadorDto trabajadorguardado = trabajadorServices.guardar(trabajadorDto);
+    public ResponseEntity <TrabajadorDtoResponse> guardar (@Valid @RequestBody TrabajadorDto trabajadorDto) {
+        TrabajadorDtoResponse trabajadorguardado = trabajadorServices.guardar(trabajadorDto);
         return ResponseEntity
         .status(HttpStatus.CREATED)
         .body(trabajadorguardado);
     }
-    
+
     //listar Trabajadores
     @GetMapping
-    public ResponseEntity<List<TrabajadorDto>> listarTodos() {
+    public ResponseEntity<List<TrabajadorDtoResponse>> ListarTodos() {
         return ResponseEntity.ok(trabajadorServices.listarTodos());
     }
-    
+
     //Consultar trabajador por Id
     @GetMapping("/{id}")
-    public ResponseEntity<TrabajadorDto> consultaId(@PathVariable Long id){
+    public ResponseEntity<TrabajadorDtoResponse> consultaId(@PathVariable Long id){
         return ResponseEntity.ok(trabajadorServices.buscarId(id));
-    }
-
-    //Consultar trabajador por Post
-    @PostMapping("/buscar")
-    public ResponseEntity<TrabajadorDto> consultarIdPost(@RequestBody TrabajadorDto dto){
-        TrabajadorDto encontrado = trabajadorServices.buscarId(dto.getId());
-        return ResponseEntity.ok(encontrado);
     }
 
     //Actualizar trabajador
     @PutMapping("/{id}")
-    public ResponseEntity<TrabajadorDto> update(@PathVariable Long id, @RequestBody TrabajadorDto trabajadorDto) {
-        TrabajadorDto trabajadorActualizado = trabajadorServices.actualizar(id, trabajadorDto);
+    public ResponseEntity<TrabajadorDtoResponse> update(@PathVariable Long id, @RequestBody TrabajadorDto trabajadorDto) {
+        TrabajadorDtoResponse trabajadorActualizado = trabajadorServices.actualizar(id, trabajadorDto);
         return ResponseEntity.ok(trabajadorActualizado);
     }
-
+    //actualizar trabajador
     @PutMapping("/actualizar")
-    public ResponseEntity<TrabajadorDto> update(@RequestBody TrabajadorDto trabajadorDto) {
-        TrabajadorDto trabajadorActualizado = trabajadorServices.actualizar(trabajadorDto.getId(), trabajadorDto);
+    public ResponseEntity<TrabajadorDtoResponse> update(@RequestBody TrabajadorDto trabajadorDto) {
+        TrabajadorDtoResponse trabajadorActualizado = trabajadorServices.actualizar(trabajadorDto.getId(), trabajadorDto);
         return ResponseEntity.ok(trabajadorActualizado);
     }
-
+    //Eliminar trabajador
     @DeleteMapping("/{id}")
     public ResponseEntity<String> delete(@PathVariable Long id, @RequestBody TrabajadorDto trabajadorDto) {
-        trabajadorServices.delete(id,null);
+        trabajadorServices.delete(id, trabajadorDto);
         return ResponseEntity.ok("Trabajador eliminado correctamente");
     }
-
+    
 }

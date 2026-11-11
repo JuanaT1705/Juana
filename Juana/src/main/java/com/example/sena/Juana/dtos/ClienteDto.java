@@ -1,5 +1,6 @@
 package com.example.sena.Juana.dtos;
 
+
 import lombok.AllArgsConstructor;
 
 import lombok.Getter;
@@ -15,7 +16,7 @@ import lombok.experimental.SuperBuilder;
 
 public class ClienteDto extends UsuarioDto{
 
-    private String tipCli;
+    private Byte tipCli;
     private Integer pts;
 
 }

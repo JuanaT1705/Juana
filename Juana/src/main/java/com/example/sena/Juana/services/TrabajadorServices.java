@@ -2,26 +2,31 @@ package com.example.sena.Juana.services;
 
 import java.util.List;
 
+
 import com.example.sena.Juana.dtos.TrabajadorDto;
+import com.example.sena.Juana.dtos.TrabajadorDtoResponse;
 
 
 
-public interface TrabajadorServices {
+public interface TrabajadorServices{
 
     //Registrar un nuevo usuario
-    TrabajadorDto guardar(TrabajadorDto trabajadorDto);
+    TrabajadorDtoResponse guardar(TrabajadorDto trabajadorDto);
 
     //Listar todos los usuarios
 
-    List<TrabajadorDto> listarTodos();
+    List<TrabajadorDtoResponse> listarTodos();
 
-    //Consultar por Id
+     //Consultar por Id
 
-    TrabajadorDto   buscarId(Long id);
+    TrabajadorDtoResponse buscarId(Long id);
 
     //Actualizar un usuario
-    TrabajadorDto actualizar(Long id, TrabajadorDto trabajadorDto);
+    TrabajadorDtoResponse actualizar(Long id, TrabajadorDto trabajadorDto);
 
-    TrabajadorDto delete(Long id, TrabajadorDto trabajadorDto);
+    //Eliminar un usuario
+
+    TrabajadorDtoResponse delete(Long id, TrabajadorDto trabajadorDto);
+
 
 }

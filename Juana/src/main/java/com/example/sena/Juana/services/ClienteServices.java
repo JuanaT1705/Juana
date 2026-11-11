@@ -3,27 +3,28 @@ package com.example.sena.Juana.services;
 import java.util.List;
 
 import com.example.sena.Juana.dtos.ClienteDto;
+import com.example.sena.Juana.dtos.ClienteDtoResponse;
 
 
 public interface ClienteServices {
 
     //Registrar un nuevo usuario
-    ClienteDto guardar(ClienteDto clienteDto);
+    ClienteDtoResponse guardar(ClienteDto clienteDto);
 
     //Listar todos los usuarios
 
-    List<ClienteDto> listarTodos();
+    List<ClienteDtoResponse> listarTodos();
 
     //Consultar por Id
 
-    ClienteDto buscarId(Long id);
+    ClienteDtoResponse buscarId(Long id);
 
     //Actualizar un usuario
-    ClienteDto actualizar(Long id, ClienteDto clienteDto);
+    ClienteDtoResponse actualizar(Long id, ClienteDto clienteDto);
 
     //Eliminar un usuario
 
-    ClienteDto delete(Long id, ClienteDto clienteDto);
+    ClienteDtoResponse delete(Long id, ClienteDto clienteDto);
 
 
 }

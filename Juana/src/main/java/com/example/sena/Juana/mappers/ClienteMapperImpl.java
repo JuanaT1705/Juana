@@ -3,13 +3,14 @@ package com.example.sena.Juana.mappers;
 import org.springframework.stereotype.Component;
 
 import com.example.sena.Juana.dtos.ClienteDto;
+import com.example.sena.Juana.dtos.ClienteDtoResponse;
 import com.example.sena.Juana.models.usuarios.Cliente;
 
 @Component
 public class ClienteMapperImpl implements ClienteMapper {
 
      @Override
-    public ClienteDto toDto(Cliente cliente){
+    public ClienteDtoResponse toDto(Cliente cliente){
 
         //validad que tenga datos
         if (cliente == null) {
@@ -18,7 +19,7 @@ public class ClienteMapperImpl implements ClienteMapper {
         }
 
         //convertir de cliente a  clienteDto
-        return  ClienteDto.builder()
+        return  ClienteDtoResponse.builder()
         //atribitos de usuarioDto
         .id(cliente.getId())
         .nomb(cliente.getNom())
@@ -27,7 +28,7 @@ public class ClienteMapperImpl implements ClienteMapper {
         .tele(cliente.getTel())
 
          //atributos de cliente
-        .tipCli(cliente.getTipoCliente())
+        .tipCli(cliente.getTipoCliente().getNom_TipoCli())
         .pts(cliente.getPuntos())
         .build();
     }
@@ -49,7 +50,7 @@ public class ClienteMapperImpl implements ClienteMapper {
         .dir(clienteDto.getDirec())
         .tel(clienteDto.getTele())
 
-        .tipoCliente(clienteDto.getTipCli())
+        //No es necesario mapear el tipo de cliente por que tiene relación con la entidad TiposCliente
         .puntos(clienteDto.getPts())
         .build();
 
